@@ -3,15 +3,15 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import os
 import pandas as pd
-import time
+from time import gmtime, strftime
 import gspread
 from credentials import CLIENT_ID, CLIENT_SECRET, SECRET_KEY
 
 SCOPE = "user-top-read user-library-read"
 TOKEN_CODE = "token_info"
-
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
+app.config['SESSION_COOKIE_NAME'] = "Josh's session"
 
 def create_spotify_oauth():
     return SpotifyOAuth(
@@ -37,6 +37,8 @@ def login():
 
 @app.route('/redirectPage')
 def redirectPage():
+    if os.path.exists(".cache"):
+        os.remove(".cache")
     sp_oauth = create_spotify_oauth()
     session.clear()
     code = request.args.get('code')
@@ -46,14 +48,83 @@ def redirectPage():
 
 @app.route('/receipt')
 def receipt():
-    user_token = get_token()
+    try:
+        user_token = get_token()
+    except:
+        print("User has not logged in.")
+        return redirect("/")
+
     sp = spotipy.Spotify(auth = user_token['access_token'])
-    user_top_songs = sp.current_user_top_tracks(
-        limit = 10,
-        offset = 0,
-        time_range = 'medium_term'
+    username = sp.current_user()['display_name']
+
+    short_term = sp.current_user_top_tracks(
+        limit=10,
+        offset=0,
+        time_range='short_term'
     )
-    return render_template('receipt.html', title='Welcome')
+    medium_term = sp.current_user_top_tracks(
+        limit=10,
+        offset=0,
+        time_range='medium_term'
+    )
+    long_term = sp.current_user_top_tracks(
+        limit=10,
+        offset=0,
+        time_range='long_term'
+    )
+
+    if os.path.exists(".cache"):
+        os.remove(".cache")
+
+    return render_template('table.html', 
+                           title='Receiptify by Joshua Casuga', 
+                           username=username,
+                           short_term=short_term,
+                           medium_term = medium_term,
+                           long_term = long_term,
+                           currentTime = gmtime())
+
+@app.template_filter('strftime')
+def _jinja2_filter_datetime(date, fmt=None):
+    return strftime("%a, %d %b %Y", date)
+
+@app.template_filter('mmss')
+def _jinja2_filter_milliseconds(time, fmt=None):
+    time = int(time / 1000)
+    minutes = time // 60
+    seconds = time % 60
+    if seconds < 10:
+        return str(minutes) + ":0" + str(seconds)
+    return str(minutes) + ":" + str(seconds)
+
+'''
+@app.route('/getTracks')
+def getTracks():
+    user_token = get_token()
+    sp = spotipy.Spotify(auth=user_token['access_token'])
+
+    current_user_name = sp.current_user()['display_name']
+    short_term = sp.current_user_top_tracks(
+        limit=10,
+        offset=0,
+        time_range='short_term',
+    )
+    medium_term = sp.current_user_top_tracks(
+        limit=10,
+        offset=0,
+        time_range='medium_term',
+    )
+    long_term = sp.current_user_top_tracks(
+        limit=10,
+        offset=0,
+        time_range='long_term',
+    )
+
+    if os.path.exists(".cache"): 
+        os.remove(".cache")
+
+    return render_template('receipt.html', user_display_name=current_user_name, short_term=short_term, medium_term=medium_term, long_term=long_term, currentTime=gmtime())
+'''
 
 
 '''
