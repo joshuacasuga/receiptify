@@ -25,6 +25,10 @@ def get_token():
     token_info = session.get(TOKEN_CODE, None)
     return token_info
 
+def clear_cache():
+    if os.path.exists(".cache"):
+        os.remove(".cache")
+
 @app.route('/')
 def index():
     return render_template('index.html', title = 'Welcome')
@@ -37,8 +41,7 @@ def login():
 
 @app.route('/redirectPage')
 def redirectPage():
-    if os.path.exists(".cache"):
-        os.remove(".cache")
+    clear_cache()
     sp_oauth = create_spotify_oauth()
     session.clear()
     code = request.args.get('code')
@@ -73,8 +76,7 @@ def receipt():
         time_range='long_term'
     )
 
-    if os.path.exists(".cache"):
-        os.remove(".cache")
+    clear_cache()
 
     return render_template('table.html', 
                            title='Receiptify by Joshua Casuga', 

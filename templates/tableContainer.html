@@ -1,13 +1,13 @@
 {% macro tableContainer(username, songs, id, duration) -%}
 <div id="{{ id }}">
-  <h2>RECEIPTIFY CLONE</h2>
+  <p>{{ username }}</p>
   <p>{{ duration }}</p>
   <p>{{ currentTime|strftime }}</p>
 
   <table>
     {% for song in songs %}
     <tr>
-      <td>{{ loop.index }}</td>
+      <!--<td>{{ loop.index }}</td>-->
       <td>{{ song.name }} - {{ song.artists[0].name }}</td>
       <td>{{ song.duration_ms | mmss }}</td>
     </tr>
