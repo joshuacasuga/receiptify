@@ -6,6 +6,7 @@
     />
     <title>{{ title }}</title>
   </head>
+
   <body>
     {% from "tableContainer.html" import tableContainer with context %}
     
@@ -19,7 +20,7 @@
         currentReceipt = id;
       }
     </script>
-    
+
     <div>
       <center>
         <h1>Wrapped on Demand</h1>
@@ -30,20 +31,20 @@
     <div style="width: 100%; height: auto">
       <center>
         <div>
-          <button onclick="showContent('short_term_data')">
+          <button class="spotifyButton" onclick="showContent('short_term_data')">
             Last Month
           </button>
-          <button onclick="showContent('medium_term_data')">
+          <button class="spotifyButton" onclick="showContent('medium_term_data')">
             Last Six Months
           </button>
-          <button onclick="showContent('long_term_data')">
+          <button class="spotifyButton" onclick="showContent('long_term_data')">
             All Time
           </button>
         </div>
       </center>
     </div>
     
-    <div style="width: 100%; height: auto">
+    <div class="tableCard" style="width: 100%; height: auto">
       <center>
         {{ tableContainer(username, short_term['items'], 'short_term_data', 'Last month') }} 
         {{ tableContainer(username, medium_term['items'], 'medium_term_data', 'Last six months') }} 
@@ -51,5 +52,23 @@
       </center>
     </div>
   
+    <!--footer-->
+    <div class="footer">
+      <center>
+        <br>
+        <br>
+        <div class="seperator">
+          <hr>
+        </div>
+        <br>
+        <p class="info">
+           Made by 
+          <a href="https://www.linkedin.com/in/joshuacasuga/">Joshua Casuga</a>
+        </p>
+        <p class="info">
+          <a href="http://127.0.0.1:5000/">Home</a>
+        </p>
+      </center>
+    </div>
   </body>
 </html>

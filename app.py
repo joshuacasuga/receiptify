@@ -2,7 +2,7 @@ from flask import Flask, request, url_for, session, redirect, render_template
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import os
-import pandas as pd
+#import pandas as pd
 from time import gmtime, strftime
 import gspread
 from credentials import CLIENT_ID, CLIENT_SECRET, SECRET_KEY
@@ -47,10 +47,10 @@ def redirectPage():
     code = request.args.get('code')
     token_info = sp_oauth.get_access_token(code)
     session[TOKEN_CODE] = token_info
-    return redirect(url_for('receipt', _external = True))
+    return redirect(url_for('showData', _external = True))
 
-@app.route('/receipt')
-def receipt():
+@app.route('/showData')
+def showData():
     try:
         user_token = get_token()
     except:
