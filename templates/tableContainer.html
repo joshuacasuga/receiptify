@@ -5,9 +5,14 @@
   <p>{{ currentTime|strftime }}</p>
 
   <table>
+    <tr>
+      <th class="numColumn">#</th>
+      <th>Song - Artist</th>
+      <th class="lengthColumn">Length</th>
+    </tr>
     {% for song in songs %}
     <tr>
-      <!--<td>{{ loop.index }}</td>-->
+      <td>{{ loop.index }}</td>
       <td>{{ song.name }} - {{ song.artists[0].name }}</td>
       <td>{{ song.duration_ms | mmss }}</td>
     </tr>

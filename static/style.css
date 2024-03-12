@@ -9,3 +9,35 @@
 #long_term_data {
     display: none
 }
+
+body {
+    font-family: 'Gill Sans', 'Trebuchet MS', sans-serif
+}
+
+/*Table format start*/
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 500px;
+}
+
+.numColumn {
+    width: 5%
+}
+
+.lengthColumn {
+    width: 10%
+}
+
+th,
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/*Table format end*/

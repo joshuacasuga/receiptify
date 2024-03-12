@@ -31,7 +31,7 @@ def clear_cache():
 
 @app.route('/')
 def index():
-    return render_template('index.html', title = 'Welcome')
+    return render_template('index.html', title = 'Wrapped on Demand')
 
 @app.route('/login')
 def login():
@@ -79,7 +79,7 @@ def receipt():
     clear_cache()
 
     return render_template('table.html', 
-                           title='Receiptify by Joshua Casuga', 
+                           title='Wrapped on Demand', 
                            username=username,
                            short_term=short_term,
                            medium_term = medium_term,
