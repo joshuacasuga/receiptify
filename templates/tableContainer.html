@@ -1,7 +1,7 @@
-{% macro tableContainer(username, songs, id, duration) -%}
-<div id="{{ id }}">
+{% macro tableContainer(username, songs, id, time_period) -%}
+<div class = "tableContainer" id ="{{ id }}">
   <p>{{ username }}</p>
-  <p>{{ duration }}</p>
+  <p>{{ time_period }}</p>
   <p>{{ currentTime|strftime }}</p>
 
   <table>

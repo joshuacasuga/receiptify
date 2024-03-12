@@ -1,11 +1,11 @@
-#short_term_receipt {
+#short_term_data {
+    display: contents
+}
+
+#medium_term_data {
     display: none
 }
 
-#medium_term_receipt {
-    display: none
-}
-
-#long_term_receipt {
+#long_term_data {
     display: none
 }
