@@ -51,6 +51,8 @@ tr:nth-child(even) {
 
 .info {}
 
+.tableCard {}
+
 .spotifyButton {
 
     display: inline-block;
