@@ -22,8 +22,15 @@ body {
 /*Table format start*/
 table {
     table-layout: fixed;
+    border: 1px solid transparent;
     border-collapse: collapse;
+    border-radius: 15px;
     width: 500px;
+    background-color: #ffffff;
+}
+
+.tableText {
+    color: #000000;
 }
 
 .numColumn {
@@ -36,22 +43,14 @@ table {
 
 th,
 td {
-    border: 1px solid #dddddd;
+    border: 1px solid #191414;
     text-align: left;
     padding: 8px
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
 }
 
 /*Table format end*/
 
 .footer {}
-
-.info {}
-
-.tableCard {}
 
 .spotifyButton {
 
@@ -74,13 +73,6 @@ tr:nth-child(even) {
     color: #fff;
     background-color: #1ED760;
     height: 48px;
-
-
-}
-
-.spotifyButton:hover {
-    transform: scale(1.04);
-    background-color: #21e065;
 }
 
 .spotifyButton:focus {
@@ -103,9 +95,29 @@ tr:nth-child(even) {
     color: #fff;
     background-color: #15883e;
     height: 48px;
+}
 
-    :hover {
-        background-color: #1db954;
-    }
+.spotifyButton:hover {
+    transform: scale(1.04);
+    background-color: #21e065;
+}
 
+.hyperlink:link {
+    color: #1ED760;
+    text-decoration: none;
+}
+
+.hyperlink:visited {
+    color: #1ED760;
+    text-decoration: none;
+}
+
+.hyperlink:hover {
+    color: #15883e;
+    text-decoration: underline;
+}
+
+.hyperlink:active {
+    color: #15883e;
+    text-decoration: underline;
 }

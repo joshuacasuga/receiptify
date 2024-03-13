@@ -1,9 +1,12 @@
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</html>
 {% macro tableContainer(username, songs, id, time_period) -%}
 <div class = "tableContainer" id ="{{ id }}">
   <p>Results for {{ username }}</p>
   <p>{{ time_period }}</p>
   
-  <table>
+  <table class="tableText">
     <tr>
       <th class="numColumn">#</th>
       <th>Song - Artist</th>
