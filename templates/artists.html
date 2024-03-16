@@ -10,16 +10,16 @@
   </head>
 
   <body>
-    {% from "tableContainer.html" import tableContainer with context %}
+    {% from "tableContainer.html" import artistsContainer with context %}
     
     <script>
-      var currentReceipt;
+      var currentTable;
       function showContent(id) {
         for (let i = 0; i < document.querySelectorAll(".tableContainer").length; i++) {
           document.querySelectorAll(".tableContainer")[i].style.display = "none";
         }
         document.getElementById(id).style.display = "inline-block";
-        currentReceipt = id;
+        currentTable = id;
       }
     </script>
 
@@ -48,9 +48,9 @@
     
     <div>
       <center>
-        {{ tableContainer(username, short_term['items'], 'short_term_data', 'Last month') }} 
-        {{ tableContainer(username, medium_term['items'], 'medium_term_data', 'Last six months') }} 
-        {{ tableContainer(username, long_term['items'], 'long_term_data', 'All time') }}
+        {{ artistsContainer(username, short_term['items'], 'short_term_data', 'Last month') }} 
+        {{ artistsContainer(username, medium_term['items'], 'medium_term_data', 'Last six months') }} 
+        {{ artistsContainer(username, long_term['items'], 'long_term_data', 'All time') }}
       </center>
     </div>
   

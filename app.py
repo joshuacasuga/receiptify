@@ -47,10 +47,14 @@ def redirectPage():
     code = request.args.get('code')
     token_info = sp_oauth.get_access_token(code)
     session[TOKEN_CODE] = token_info
-    return redirect(url_for('showData', _external = True))
+    return redirect(url_for('landing', _external = True))
 
-@app.route('/showData')
-def showData():
+@app.route('/landing')
+def landing():
+    return render_template('landing.html', title = 'Wrapped on Demand')
+
+@app.route('/showTracks')
+def showTracks():
     try:
         user_token = get_token()
     except:
@@ -60,17 +64,18 @@ def showData():
     sp = spotipy.Spotify(auth = user_token['access_token'])
     username = sp.current_user()['display_name']
 
-    short_term = sp.current_user_top_tracks(
+    #tracks
+    short_term_tracks = sp.current_user_top_tracks(
         limit=10,
         offset=0,
         time_range='short_term'
     )
-    medium_term = sp.current_user_top_tracks(
+    medium_term_tracks = sp.current_user_top_tracks(
         limit=10,
         offset=0,
         time_range='medium_term'
     )
-    long_term = sp.current_user_top_tracks(
+    long_term_tracks = sp.current_user_top_tracks(
         limit=10,
         offset=0,
         time_range='long_term'
@@ -78,12 +83,50 @@ def showData():
 
     clear_cache()
 
-    return render_template('table.html', 
+    return render_template('tracks.html', 
                            title='Wrapped on Demand', 
                            username=username,
-                           short_term=short_term,
-                           medium_term = medium_term,
-                           long_term = long_term,
+                           short_term=short_term_tracks,
+                           medium_term = medium_term_tracks,
+                           long_term = long_term_tracks,
+                           currentTime = gmtime())
+
+@app.route('/showArtists')
+def showArtists():
+    try:
+        user_token = get_token()
+    except:
+        print("User has not logged in.")
+        return redirect("/")
+
+    sp = spotipy.Spotify(auth = user_token['access_token'])
+    username = sp.current_user()['display_name']
+
+    #artists
+    short_term_artists = sp.current_user_top_artists(
+        limit=10,
+        offset=0,
+        time_range='short_term'
+    )
+    medium_term_artists = sp.current_user_top_artists(
+        limit=10,
+        offset=0,
+        time_range='medium_term'
+    )
+    long_term_artists = sp.current_user_top_artists(
+        limit=10,
+        offset=0,
+        time_range='long_term'
+    )
+    
+    clear_cache()
+
+    return render_template('artists.html', 
+                           title='Wrapped on Demand', 
+                           username=username,
+                           short_term=short_term_artists,
+                           medium_term = medium_term_artists,
+                           long_term = long_term_artists,
                            currentTime = gmtime())
 
 @app.template_filter('strftime')

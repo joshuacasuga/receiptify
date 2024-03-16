@@ -1,0 +1,43 @@
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <center>
+      <h1>Wrapped on Demand</h1>
+      <h2>Generate your top Spotify tracks!</h2>
+
+      <button class="spotifyButton" onclick="location.href = '/showTracks';">
+        View Your Top Tracks
+      </button>
+      <button class="spotifyButton" onclick="location.href = '/showArtists';">
+        View Your Top Artists
+      </button>
+    </center>
+
+    <!--footer-->
+    <div class="footer">
+      <center>
+        <br>
+        <br>
+        <div class="seperator">
+          <hr>
+        </div>
+        <br>
+        <p class="info">
+           Made by 
+          <a class="hyperlink" href="https://www.linkedin.com/in/joshuacasuga/">Joshua Casuga</a>
+        </p>
+        <p class="info">
+          <a class="hyperlink" href="http://127.0.0.1:5000/">Home</a>
+        </p>
+      </center>
+    </div>
+  </body>
+</html>

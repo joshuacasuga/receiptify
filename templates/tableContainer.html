@@ -1,7 +1,7 @@
 <html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </html>
-{% macro tableContainer(username, songs, id, time_period) -%}
+{% macro tracksContainer(username, songs, id, time_period) -%}
 <div class = "tableContainer" id ="{{ id }}">
   <p>Results for {{ username }}</p>
   <p>{{ time_period }}</p>
@@ -25,3 +25,28 @@
 </div>
 
 {% endmacro %}
+
+{% macro artistsContainer(username, artists, id, time_period) -%}
+<div class = "tableContainer" id ="{{ id }}">
+  <p>Results for {{ username }}</p>
+  <p>{{ time_period }}</p>
+  
+  <table class="tableText">
+    <tr>
+      <th class="numColumn">#</th>
+      <th>Artist</th>
+    </tr>
+    {% for artist in artists %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ artist.name }}</td>
+      <td>{{  }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <p>Last updated on {{ currentTime|strftime }}</p>
+</div>
+
+{% endmacro %}
+

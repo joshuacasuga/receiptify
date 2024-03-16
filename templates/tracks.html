@@ -1,0 +1,76 @@
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>{{ title }}</title>
+  </head>
+
+  <body>
+    {% from "tableContainer.html" import tracksContainer with context %}
+    
+    <script>
+      var currentTable;
+      function showContent(id) {
+        for (let i = 0; i < document.querySelectorAll(".tableContainer").length; i++) {
+          document.querySelectorAll(".tableContainer")[i].style.display = "none";
+        }
+        document.getElementById(id).style.display = "inline-block";
+        currentTable = id;
+      }
+    </script>
+
+    <div>
+      <center>
+        <h1>Wrapped on Demand</h1>
+        <h2>Generate your top Spotify tracks!</h2>
+      </center>
+    </div>
+    
+    <div style="width: 100%; height: auto">
+      <center>
+        <div>
+          <button class="spotifyButton" onclick="showContent('short_term_data')">
+            Last Month
+          </button>
+          <button class="spotifyButton" onclick="showContent('medium_term_data')">
+            Last Six Months
+          </button>
+          <button class="spotifyButton" onclick="showContent('long_term_data')">
+            All Time
+          </button>
+        </div>
+      </center>
+    </div>
+    
+    <div>
+      <center>
+        {{ tracksContainer(username, short_term['items'], 'short_term_data', 'Last month') }} 
+        {{ tracksContainer(username, medium_term['items'], 'medium_term_data', 'Last six months') }} 
+        {{ tracksContainer(username, long_term['items'], 'long_term_data', 'All time') }}
+      </center>
+    </div>
+  
+    <!--footer-->
+    <div class="footer">
+      <center>
+        <br>
+        <br>
+        <div class="seperator">
+          <hr>
+        </div>
+        <br>
+        <p>
+           Made by 
+          <a class="hyperlink" href="https://www.linkedin.com/in/joshuacasuga/">Joshua Casuga</a>
+        </p>
+        <p>
+          <a class="hyperlink" href="http://127.0.0.1:5000/">Home</a>
+        </p>
+      </center>
+    </div>
+  </body>
+</html>
