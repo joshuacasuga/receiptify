@@ -39,8 +39,8 @@
     {% for artist in artists %}
     <tr>
       <td>{{ loop.index }}</td>
-      <td>{{ artist.name }}</td>
-      <td>{{  }}</td>
+      <td>{{ artist.name }} 
+        <img src= '{{ artist.images[0].url }}' loading = "lazy"></td>
     </tr>
     {% endfor %}
   </table>
