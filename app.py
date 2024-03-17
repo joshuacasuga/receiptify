@@ -2,9 +2,7 @@ from flask import Flask, request, url_for, session, redirect, render_template
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import os
-#import pandas as pd
 from time import gmtime, strftime
-import gspread
 from credentials import CLIENT_ID, CLIENT_SECRET, SECRET_KEY
 
 SCOPE = "user-top-read user-library-read"
@@ -141,84 +139,3 @@ def _jinja2_filter_milliseconds(time, fmt=None):
     if seconds < 10:
         return str(minutes) + ":0" + str(seconds)
     return str(minutes) + ":" + str(seconds)
-
-'''
-@app.route('/getTracks')
-def getTracks():
-    user_token = get_token()
-    sp = spotipy.Spotify(auth=user_token['access_token'])
-
-    current_user_name = sp.current_user()['display_name']
-    short_term = sp.current_user_top_tracks(
-        limit=10,
-        offset=0,
-        time_range='short_term',
-    )
-    medium_term = sp.current_user_top_tracks(
-        limit=10,
-        offset=0,
-        time_range='medium_term',
-    )
-    long_term = sp.current_user_top_tracks(
-        limit=10,
-        offset=0,
-        time_range='long_term',
-    )
-
-    if os.path.exists(".cache"): 
-        os.remove(".cache")
-
-    return render_template('receipt.html', user_display_name=current_user_name, short_term=short_term, medium_term=medium_term, long_term=long_term, currentTime=gmtime())
-'''
-
-
-'''
-#Getting Track IDs
-def get_track_ids(time_frame):
-    track_ids = []
-    for song in time_frame['items']:
-        track_ids.append(song['id'])
-    return track_ids
-
-#Getting track information using track ids
-def get_track_features(id):
-    meta = spotipy.track(id)
-
-    #meta data
-    name = meta['name']
-    album = meta['album']['name']
-    artist = meta['album']['artists'][0]['name']
-    spotify_url = meta['external_urls']['spotify']
-    album_cover = meta['album']['images'][0]['url']
-    track_info = [name, album, artist, spotify_url, album_cover]
-    return track_info
-
-def insert_to_spread(track_ids):
-    #Loop over track ids
-    tracks = []
-    for i in range(len(track_ids)):
-        time.sleep(.75)
-        track = get_track_features(track_ids[i])
-        tracks.append(track)
-
-    #Create dataframe
-        dataframe = pd.DataFrame(tracks, columns = ['name', 'album', 'artist', 'spotify_url', 'album_cover'])
-        #print(df.head(5))
-
-        #Inserting dataset into Google Sheet
-        gc = gspread.service_account(filename='credentials.json')
-        sh = gc.open_by_key(os.getenv('GSPREAD_OPEN_BY_KEY'))
-        worksheet = sh.worksheet(f'{time_period}')
-        worksheet.update([dataframe.columns.values.tolist()] + dataframe.values.tolist())
-        print("Import " + str(i + 1) + " complete.")
-
-#Getting data within different time ranges
-time_ranges = ['short_term', 'medium_term', 'long_term']
-for time_period in time_ranges:
-    print("Beginning import for time frame: " + time_period)
-    top_tracks = spotipy.current_user_top_tracks(limit = 10, offset = 0, time_range = time_period)
-    track_ids = get_track_ids(top_tracks)
-    insert_to_spread(track_ids) #Calls function
-
-print('Data import complete.')
-'''
