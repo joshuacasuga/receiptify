@@ -41,11 +41,11 @@
   
   <table style="color: #ffffff;">
     {% for artist in artists %}
-    <tr>
-      <td>{{ loop.index }}</td>
-      <td>{{ artist.name }} 
-        <img src= '{{ artist.images[0].url }}' loading = "lazy"></td>
-    </tr>
+      <td class="artistImage"><img src= '{{ artist.images[0].url }}' loading = "lazy"></td>
+      {% if loop.index is divisibleby(3) %}
+      <tr>
+      </tr>
+      {% endif %} 
     {% endfor %}
   </table>
 
