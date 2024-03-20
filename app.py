@@ -51,8 +51,8 @@ def redirectPage():
 def landing():
     return render_template('landing.html', title = 'Wrapped on Demand')
 
-@app.route('/showTracks')
-def showTracks():
+@app.route('/tracks')
+def tracks():
     try:
         user_token = get_token()
     except:
@@ -89,8 +89,8 @@ def showTracks():
                            long_term = long_term_tracks,
                            currentTime = gmtime())
 
-@app.route('/showArtists')
-def showArtists():
+@app.route('/artists')
+def artists():
     try:
         user_token = get_token()
     except:

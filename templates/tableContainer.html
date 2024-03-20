@@ -6,17 +6,25 @@
   <p>Results for {{ username }}</p>
   <p>{{ time_period }}</p>
   
-  <table class="tableText">
-    <tr>
-      <th class="numColumn">#</th>
-      <th>Song - Artist</th>
-      <th class="lengthColumn">Length</th>
-    </tr>
+  <table class="tracksTable">
     {% for song in songs %}
     <tr>
-      <td>{{ loop.index }}</td>
-      <td>{{ song.name }} - {{ song.artists[0].name }}</td>
-      <td>{{ song.duration_ms | mmss }}</td>
+      <td style="width:5%;">{{ loop.index }}</td>
+      <td style="width:10%">
+        <img src='{{ song.album.images[0].url }}' loading = "lazy" style="width: 75px">
+      </td>
+      <td style="font-weight: bold;">
+        {{ song.name }}
+      <td>
+        {{ song.artists[0].name }}
+      </td>
+      <td style="width: 20px;">
+        <a href="https://open.spotify.com/track/{{song.id}}" target="_blank" style="text-decoration: none;">
+          <img class="spotifyLink" src="/static/spotify_icon.png">
+        </a>
+      </td>
+      <td style="width:15%; padding-left: 5px;">
+        {{ song.duration_ms | mmss }}</td>
     </tr>
     {% endfor %}
   </table>
@@ -31,11 +39,7 @@
   <p>Results for {{ username }}</p>
   <p>{{ time_period }}</p>
   
-  <table class="tableText">
-    <tr>
-      <th class="numColumn">#</th>
-      <th>Artist</th>
-    </tr>
+  <table style="color: #ffffff;">
     {% for artist in artists %}
     <tr>
       <td>{{ loop.index }}</td>
