@@ -3,8 +3,8 @@
 </html>
 {% macro tracksContainer(username, songs, id, time_period) -%}
 <div class = "tableContainer" id ="{{ id }}">
-  <p>Results for {{ username }}</p>
-  <p>{{ time_period }}</p>
+  <h3>Results for {{ username }}</h3>
+  <h2>Top Tracks ({{ time_period }})</h2>
   
   <table class="tracksTable">
     {% for song in songs %}
@@ -36,12 +36,22 @@
 
 {% macro artistsContainer(username, artists, id, time_period) -%}
 <div class = "tableContainer" id ="{{ id }}">
-  <p>Results for {{ username }}</p>
-  <p>{{ time_period }}</p>
+  <br>
+  <h3>Results for {{ username }}</h3>
+  <h2>Top Artists ({{ time_period }})</h2>
   
   <table style="color: #ffffff;">
+    <tr>
+    </tr>
     {% for artist in artists %}
-      <td class="artistImage"><img src= '{{ artist.images[0].url }}' loading = "lazy"></td>
+      <td style="text-align: center;">
+        <img src= '{{ artist.images[0].url }}' loading = "lazy" style="width: 300px;" class="artistImage">
+        <p>{{ loop.index }}.{{ artist.name }}&ensp;
+          <a href="https://open.spotify.com/artist/{{artist.id}}" target="_blank" style="text-decoration: none;">
+            <img class="spotifyLink" src="/static/spotify_icon.png">
+          </a>
+        </p>
+      </td>
       {% if loop.index is divisibleby(3) %}
       <tr>
       </tr>

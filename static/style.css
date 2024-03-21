@@ -100,11 +100,12 @@ td {
 
 .spotifyLink {
     width: 20px;
-    padding-top: 0%;
     cursor: pointer;
 }
 
 .artistImage {
-    width: 500px;
-    max-width: 100%;
+    max-width: 85%;
+    height: auto;
+    text-align: center;
+    /*padding-bottom: 30%;*/
 }
