@@ -1,0 +1,26 @@
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <!--header-->
+    {% from "header.html" import header with context %}
+    {{ header() }}
+    <!--end header-->
+    <!--body-->
+    <center>
+      
+    </center>
+    <!--body-->
+    <!--footer-->
+    {% from "footer.html" import footer with context %}
+    {{ footer() }}
+    <!---end footer-->
+  </body>
+</html>

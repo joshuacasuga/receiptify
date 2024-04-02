@@ -1,0 +1,31 @@
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <!--header-->
+    {% from "header.html" import header with context %}
+    {{ header() }}
+    <!--end header-->
+    <!--body-->
+    <center>
+      <p style="font-size: 40px;">
+        Contact Me
+      </p>
+      <p>
+        For any inquries, contact me at <a class="hyperlink" href="mailto: jmcasuga@cpp.edu">jmcasuga@cpp.edu</a>.
+      </p>
+    </center>
+    <!--body-->
+    <!--footer-->
+    {% from "footer.html" import footer with context %}
+    {{ footer() }}
+    <!---end footer-->
+  </body>
+</html>

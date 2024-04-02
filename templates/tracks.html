@@ -24,20 +24,8 @@
     </script>
 
     <!--header-->
-    <div>
-      <nav>
-        <ul>
-          <li><a href="">Home</a></li>
-          <li><a href=" {{ url_for('about') }} ">About</a></li>
-          <li><a href=" {{ url_for('privacy') }} ;">Privacy</a></li>
-          <li><a href=" {{ url_for('contact') }} ">Contact</a></li>
-        </ul>
-      </nav>
-      <br>
-      <br>
-      <br>
-    </div>
-    
+    {% from "header.html" import header with context %}
+    {{ header() }}
     <!--end header-->
     <!--body-->
     <div>
@@ -72,23 +60,8 @@
     </div>
     <!--end body-->
     <!--footer-->
-    <div class="footer">
-      <center>
-        <br>
-        <br>
-        <div class="seperator">
-          <hr>
-        </div>
-        <br>
-        <p>
-           Made by 
-          <a class="hyperlink" href="https://www.linkedin.com/in/joshuacasuga/" target="_blank">Joshua Casuga</a>
-        </p>
-        <p>
-          <a class="hyperlink" href="">Home</a>
-        </p>
-      </center>
-    </div>
+    {% from "footer.html" import footer with context %}
+    {{ footer() }}
     <!--end footer-->
   </body>
 </html>

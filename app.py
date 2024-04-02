@@ -49,6 +49,12 @@ def redirectPage():
 
 @app.route('/landing')
 def landing():
+    try:
+        user_token = get_token()
+        sp = spotipy.Spotify(auth = user_token['access_token'])
+    except:
+        print("User has not logged in.")
+        return redirect("/")
     return render_template('landing.html', title = 'Wrapped on Demand')
 
 @app.route('/about')

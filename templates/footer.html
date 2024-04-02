@@ -1,0 +1,27 @@
+{% macro footer() -%}
+
+<div class="footer">
+    <center>
+      <br>
+      <br>
+      <div class="seperator">
+        <hr>
+      </div>
+      <br>
+      <p>
+         Made by 
+        <a class="hyperlink" href="https://www.linkedin.com/in/joshuacasuga/" target="_blank">Joshua Casuga</a>
+      </p>
+      <p>
+        <a class="hyperlink" href=" {{ url_for('landing') }} ">Home</a>
+         | 
+        <a class="hyperlink" href=" {{ url_for('about') }}" >About</a>
+         | 
+        <a class="hyperlink" href=" {{ url_for('privacy') }}" >Privacy Policy</a>
+         | 
+        <a class="hyperlink" href=" {{ url_for('contact') }}" >Contact</a>
+      </p>
+    </center>
+  </div>
+
+{% endmacro %}
