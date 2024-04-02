@@ -9,6 +9,23 @@
     <title>{{ title }}</title>
   </head>
   <body>
+    <!--header-->
+    <div>
+      <nav>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href=" {{ url_for('about') }} ">About</a></li>
+          <li><a href=" {{ url_for('privacy') }} ;">Privacy</a></li>
+          <li><a href=" {{ url_for('contact') }} ">Contact</a></li>
+        </ul>
+      </nav>
+      <br>
+      <br>
+      <br>
+    </div>
+    
+    <!--end header-->
+    <!--body-->
     <center>
       <h1>Wrapped on Demand</h1>
       <h2>Generate your top Spotify tracks!</h2>
@@ -17,7 +34,7 @@
         Log in with Spotify
       </button>
     </center>
-
+    <!--body-->
     <!--footer-->
     <div class="footer">
       <center>
@@ -27,14 +44,15 @@
           <hr>
         </div>
         <br>
-        <p class="info">
+        <p>
            Made by 
           <a class="hyperlink" href="https://www.linkedin.com/in/joshuacasuga/" target="_blank">Joshua Casuga</a>
         </p>
-        <p class="info">
-          <a class="hyperlink" href="http://127.0.0.1:5000/">Home</a>
+        <p>
+          <a class="hyperlink" href="">Home</a>
         </p>
       </center>
     </div>
+    <!---end footer-->
   </body>
 </html>

@@ -23,6 +23,23 @@
       }
     </script>
 
+    <!--header-->
+    <div>
+      <nav>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href=" {{ url_for('about') }} ">About</a></li>
+          <li><a href=" {{ url_for('privacy') }} ;">Privacy</a></li>
+          <li><a href=" {{ url_for('contact') }} ">Contact</a></li>
+        </ul>
+      </nav>
+      <br>
+      <br>
+      <br>
+    </div>
+    
+    <!--end header-->
+    <!--body-->
     <div>
       <center>
         <h1>Wrapped on Demand</h1>
@@ -53,7 +70,7 @@
         {{ artistsContainer(username, long_term['items'], 'long_term_data', 'All time') }}
       </center>
     </div>
-  
+    <!--end body-->
     <!--footer-->
     <div class="footer">
       <center>
@@ -68,9 +85,10 @@
           <a class="hyperlink" href="https://www.linkedin.com/in/joshuacasuga/" target="_blank">Joshua Casuga</a>
         </p>
         <p>
-          <a class="hyperlink" href="http://127.0.0.1:5000/">Home</a>
+          <a class="hyperlink" href="">Home</a>
         </p>
       </center>
     </div>
+    <!--footer-->
   </body>
 </html>

@@ -81,11 +81,6 @@ td {
     height: 48px;
 }
 
-.spotifyButton:hover {
-    transform: scale(1.04);
-    background-color: #21e065;
-}
-
 .hyperlink:link,
 .hyperlink:visited {
     color: #1ED760;
@@ -108,4 +103,20 @@ td {
     height: auto;
     text-align: center;
     /*padding-bottom: 30%;*/
+}
+
+nav>ul {
+    display: inline-block;
+    list-style-type: none;
+    padding: 2vh 3vw;
+    margin: 0vh;
+    float: right;
+}
+
+nav>ul>li {
+    border: 1px solid transparent;
+    border-radius: 1vh;
+    padding: 1vh 1.2vw;
+    margin: 0;
+    display: inline-block
 }

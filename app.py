@@ -51,6 +51,18 @@ def redirectPage():
 def landing():
     return render_template('landing.html', title = 'Wrapped on Demand')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/privacypolicy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 @app.route('/tracks')
 def tracks():
     try:
