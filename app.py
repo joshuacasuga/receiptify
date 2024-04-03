@@ -59,15 +59,15 @@ def landing():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title = 'Wrapped on Demand')
 
 @app.route('/privacypolicy')
 def privacy():
-    return render_template('privacy.html')
+    return render_template('privacy.html', title = 'Wrapped on Demand')
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    return render_template('contact.html', title = 'Wrapped on Demand')
 
 @app.route('/tracks')
 def tracks():

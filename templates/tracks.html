@@ -19,7 +19,6 @@
           document.querySelectorAll(".tableContainer")[i].style.display = "none";
         }
         document.getElementById(id).style.display = "inline-block";
-        currentTable = id;
       }
     </script>
 
@@ -38,7 +37,7 @@
     <div style="width: 100%; height: auto">
       <center>
         <div>
-          <button class="spotifyButton" onclick="showContent('short_term_data')">
+          <button class="spotifyButton" id='short_term_data' onclick="showContent('short_term_data')">
             Last Month
           </button>
           <button class="spotifyButton" onclick="showContent('medium_term_data')">
